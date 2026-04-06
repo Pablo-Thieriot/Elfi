@@ -24,7 +24,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Instance.PlayLoop(forestLoopClip);
     }
 
     public void PlaySFX(AudioClip clip)

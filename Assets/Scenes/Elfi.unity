@@ -2021,9 +2021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f24d02202bd86945bbfa5c6dd4650da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 1
-  insideVolume: 0.2
-  outsideVolume: 1
+  openSound: {fileID: 8300000, guid: 828d1b104dc086240819aeaa77d5518e, type: 3}
 --- !u!65 &227321963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13833,75 +13831,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652740057}
   m_Mesh: {fileID: 2534964839176971238, guid: 319ae66480004f940a57620263c6e7c5, type: 3}
---- !u!1 &684580880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 684580881}
-  - component: {fileID: 684580883}
-  - component: {fileID: 684580882}
-  m_Layer: 0
-  m_Name: FadeZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &684580881
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684580880}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6490625522418894725}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &684580882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684580880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f24d02202bd86945bbfa5c6dd4650da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeDuration: 1
-  insideVolume: 0
-  outsideVolume: 1
---- !u!65 &684580883
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 684580880}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.2386227, y: 4.1280785, z: 2.7624664}
-  m_Center: {x: -0.15871334, y: 1.5640392, z: 0.8812332}
 --- !u!1 &685034893
 GameObject:
   m_ObjectHideFlags: 0
@@ -14670,6 +14599,76 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805977152}
   m_Mesh: {fileID: -5053925668127403250, guid: 319ae66480004f940a57620263c6e7c5, type: 3}
+--- !u!1 &811574936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 811574937}
+  - component: {fileID: 811574939}
+  - component: {fileID: 811574938}
+  m_Layer: 0
+  m_Name: FadeForest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &811574937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811574936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 940706250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &811574938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811574936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71377ede917093409019e42cc74cce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forestClip: {fileID: 8300000, guid: a850418e9c26595428df7ab79be72e16, type: 3}
+  fadeDuration: 1
+  insideVolume: 0
+  outsideVolume: 1
+--- !u!65 &811574939
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811574936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7768688, y: 4.40732, z: 1.1931458}
+  m_Center: {x: -0.053652763, y: 1.70366, z: -0.096572876}
 --- !u!95 &818457265
 Animator:
   serializedVersion: 7
@@ -26908,6 +26907,7 @@ Transform:
   m_Children:
   - {fileID: 1134638546931371756}
   - {fileID: 2415757217520752180}
+  - {fileID: 811574937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &940706251
@@ -26944,9 +26944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f24d02202bd86945bbfa5c6dd4650da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 1
-  insideVolume: 0.2
-  outsideVolume: 1
+  openSound: {fileID: 8300000, guid: 828d1b104dc086240819aeaa77d5518e, type: 3}
 --- !u!65 &940706253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51347,8 +51345,7 @@ Transform:
   m_LocalPosition: {x: -0.0000009536743, y: -0.0000019073486, z: -1.3833609}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 684580881}
+  m_Children: []
   m_Father: {fileID: 543450652746222144}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6502182840646999279

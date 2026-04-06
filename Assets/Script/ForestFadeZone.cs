@@ -1,33 +1,41 @@
 using UnityEngine;
 
-public class ForestFadeZone : MonoBehaviour
+public class DoorForestTrigger : MonoBehaviour
 {
-    public float fadeDuration = 1f; // temps pour réduire / remonter
+    [Header("Forest Settings")]
+    public AudioClip forestClip;       // clip à jouer pour la forêt
+    public float fadeDuration = 1f;    // durée du fade
+    public float insideVolume = 0.2f;  // volume quand le joueur est à l'intérieur
+    public float outsideVolume = 1f;   // volume quand le joueur est dehors
+
     private AudioSource loopSource;
+    private bool playerInside = false;
 
     private void Start()
     {
-        // récupère la loopSource de l'AudioManager
+        // Récupère le loopSource du AudioManager
         loopSource = AudioManager.Instance.loopSource;
         if (loopSource == null)
+        {
             Debug.LogWarning("AudioManager.loopSource non assigné !");
+            return;
+        }
+
+        // Centralisation : joue le clip de forêt dès le départ si pas déjà en train de jouer
+        if (loopSource.clip != forestClip)
+        {
+            AudioManager.Instance.PlayLoop(forestClip);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            playerInside = !playerInside; // inverse l'état
+            float targetVolume = playerInside ? insideVolume : outsideVolume;
             StopAllCoroutines();
-            StartCoroutine(FadeVolume(0f)); // réduit à 20% du volume
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            StopAllCoroutines();
-            StartCoroutine(FadeVolume(1f)); // revient à 100%
+            StartCoroutine(FadeVolume(targetVolume));
         }
     }
 
@@ -42,5 +50,11 @@ public class ForestFadeZone : MonoBehaviour
             yield return null;
         }
         loopSource.volume = targetVolume;
+    }
+
+    // Fonction utilitaire pour jouer un SFX de porte
+    public void PlayDoorSFX(AudioClip clip)
+    {
+        AudioManager.Instance.PlaySFX(clip);
     }
 }
