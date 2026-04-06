@@ -16,16 +16,23 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetBool("In", true);
+        if (!other.CompareTag("Player")) return;
 
-        if (audioSource != null && openSound != null)
-        {
-            audioSource.PlayOneShot(openSound);
-        }
+        // Animation de la porte
+        if (animator != null)
+            animator.SetBool("In", true);
+
+        // Son de la porte via AudioManager
+        if (openSound != null)
+            AudioManager.Instance.PlaySFX(openSound);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        animator.SetBool("In", false);
+        if (!other.CompareTag("Player")) return;
+
+        // Animation de la porte
+        if (animator != null)
+            animator.SetBool("In", false);
     }
 }
