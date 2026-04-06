@@ -50711,7 +50711,7 @@ MonoBehaviour:
   fireLoop: {fileID: 8300000, guid: 1357740996d13404f85e3eaf556e1305, type: 3}
   minDistance: 2
   maxDistance: 20
-  volume: 0.2
+  volume: 0.1
 --- !u!33 &3469287838524359890
 MeshFilter:
   m_ObjectHideFlags: 0
