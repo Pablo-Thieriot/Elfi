@@ -48643,6 +48643,7 @@ GameObject:
   - component: {fileID: 543450651985269654}
   - component: {fileID: 3469287838116633651}
   - component: {fileID: 1711813855129544953}
+  - component: {fileID: 3469287838116633654}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -50408,6 +50409,7 @@ MonoBehaviour:
   fireLoop: {fileID: 8300000, guid: 056337336f4cc194abc2559753fcb170, type: 3}
   minDistance: 1
   maxDistance: 15
+  volume: 1
 --- !u!33 &3469287836870645130
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50439,6 +50441,7 @@ MonoBehaviour:
   fireLoop: {fileID: 8300000, guid: 056337336f4cc194abc2559753fcb170, type: 3}
   minDistance: 1
   maxDistance: 15
+  volume: 1
 --- !u!33 &3469287837791061664
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50462,6 +50465,7 @@ MonoBehaviour:
   fireLoop: {fileID: 8300000, guid: 056337336f4cc194abc2559753fcb170, type: 3}
   minDistance: 1
   maxDistance: 15
+  volume: 1
 --- !u!33 &3469287837853794849
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50485,6 +50489,7 @@ MonoBehaviour:
   fireLoop: {fileID: 8300000, guid: 056337336f4cc194abc2559753fcb170, type: 3}
   minDistance: 1
   maxDistance: 15
+  volume: 1
 --- !u!33 &3469287838116633651
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -50493,6 +50498,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147514149164}
   m_Mesh: {fileID: -5741174448488666723, guid: 869c0a215ae11504a8f9362be83c15cb, type: 3}
+--- !u!114 &3469287838116633654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147514149164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916a0fe4d9fb24a4ebd7665d311d957d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireLoop: {fileID: 8300000, guid: 1357740996d13404f85e3eaf556e1305, type: 3}
+  minDistance: 2
+  maxDistance: 20
+  volume: 0.2
 --- !u!33 &3469287838524359890
 MeshFilter:
   m_ObjectHideFlags: 0

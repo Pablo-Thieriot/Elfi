@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class FireSoundEmitter : MonoBehaviour
 {
     public AudioClip fireLoop;        // le son du feu
     public float minDistance = 1f;    // distance à laquelle le son est à 100%
     public float maxDistance = 10f;   // distance à laquelle le son disparaît
+    [Range(0f, 1f)]
+    public float volume;
     private AudioSource loopSource;
 
     void Start()
@@ -17,6 +20,8 @@ public class FireSoundEmitter : MonoBehaviour
 
         // Crée ou récupère un AudioSource sur ce GameObject
         loopSource = gameObject.AddComponent<AudioSource>();
+        loopSource.volume = volume;
+
         loopSource.clip = fireLoop;
         loopSource.loop = true;
         loopSource.spatialBlend = 1f;  // 3D
