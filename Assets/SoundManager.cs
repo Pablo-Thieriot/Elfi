@@ -5,8 +5,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [Header("Sources")]
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioSource loopSource;
+    [SerializeField] public AudioSource sfxSource;
+    [SerializeField] public AudioSource loopSource;
+
+    [SerializeField] public AudioClip forestLoopClip;
+
 
     private void Awake()
     {
@@ -17,6 +20,11 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
+    }
+
+    private void Start()
+    {
+        AudioManager.Instance.PlayLoop(forestLoopClip);
     }
 
     public void PlaySFX(AudioClip clip)
