@@ -10,10 +10,15 @@ public class Character : MonoBehaviour
     float speed, verticalMovement;
     Vector3 direction, directionForward, directionRight, nextDir;
     Animator animator;
-    [SerializeField]
-    AudioClip stepSound;
+    AudioSource audioSource;
 
-    // Start is called before the first frame update
+    [Header("Sons de pas par surface")]
+    [SerializeField] AudioClip stoneSound;
+    [SerializeField] AudioClip defaultSound;
+
+    [Header("Réglages Aléatoires")]
+    [Range(0.1f, 0.5f)][SerializeField] float pitchRange = 0.5f; // Variation 
+
     void Awake()
     {
         cam = Camera.main;
@@ -21,18 +26,14 @@ public class Character : MonoBehaviour
         nextDir = transform.forward;
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         gravity();
-
         Move();
-
-
-        //apply the calculated movement to the character controller movement system
         characterController.Move((direction * speed + verticalMovement * Vector3.up) * Time.deltaTime);
-
         animator.SetFloat("Speed", speed / maxSpeed);
     }
 
@@ -40,8 +41,6 @@ public class Character : MonoBehaviour
     {
         if ((Input.GetAxisRaw("Vertical")) != 0 || (Input.GetAxisRaw("Horizontal")) != 0)
         {
-            //gets the inputs from keyboard arrows and defines the direction depending on the camera's orientation;
-
             directionForward = cam.transform.forward;
             directionForward.y = 0;
             directionForward *= Input.GetAxisRaw("Vertical");
@@ -51,66 +50,66 @@ public class Character : MonoBehaviour
             directionRight *= Input.GetAxisRaw("Horizontal");
 
             nextDir = Vector3.Normalize(directionForward + directionRight);
-
-            //Direction interpolation between the current direction and the inputed direction
             direction = Vector3.Lerp(direction, nextDir, Time.deltaTime * 2);
 
-            //Calculate the speed increasement depending on the time spent pushing an arrow button;
-
             if (speed < maxSpeed)
-            {
                 speed += acceleration * Time.deltaTime;
-            }
             else
-            {
                 speed = maxSpeed;
-            }
-
         }
         else
         {
-            //Calculate the speed decreasement depending on the time since no arrow button is pressed;
-
             if (speed != 0)
             {
                 if (speed <= 2 * acceleration * Time.deltaTime)
                     speed = 0;
                 else
-                {
                     speed -= 2 * acceleration * Time.deltaTime;
-                }
             }
         }
 
-        //make the object rotate toward its movement;
         transform.rotation = Quaternion.LookRotation(direction, transform.up);
     }
 
     private void gravity()
     {
         if (verticalMovement <= 0 && characterController.isGrounded)
-        {
             verticalMovement = -5;
-        }
         else
-        {
             verticalMovement -= jumpForce * 2 * Time.deltaTime;
-        }
     }
 
-    // Fonction appelée lors de chaque pas grâce à un animation event intégré dans le cycle de marche du personnage
     public void StepSound()
     {
-        // À remplacer lorsque vous intégrerez les sons de pas
-        if (stepSound != null)
+        RaycastHit hit;
+
+        Debug.DrawRay(transform.position, Vector3.down * 1.5f, Color.red, 1.0f);
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.5f))
         {
-            GetComponent<AudioSource>().PlayOneShot(stepSound);
+            Debug.Log("Objet : " + hit.collider.name + " | Tag : " + hit.collider.tag);
+
+            AudioClip soundToPlay = null;
+
+
+            if (hit.collider.CompareTag("Stone"))
+            {
+                soundToPlay = stoneSound;
+            }
+            else
+            {
+                soundToPlay = defaultSound;
+            }
+
+            if (soundToPlay != null && audioSource != null)
+            {
+                audioSource.pitch = Random.Range(1f - pitchRange, 1f + pitchRange);
+                audioSource.PlayOneShot(soundToPlay);
+            }
         }
         else
         {
-            Debug.Log("Il faut intégrer l'audioclip dans le script Character !!!");
+            Debug.Log("Le Raycast ne touche aucun collider sous le personnage.");
         }
-
-
     }
 }
